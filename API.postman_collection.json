@@ -1,0 +1,3696 @@
+{
+	"info": {
+		"_postman_id": "dadd37c2-4f4a-44dc-a031-6075ef16ae80",
+		"name": "API",
+		"description": "Comprehensive e-commerce API collection with microservices for users, products, cart, orders, payments, and inventory management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "31909561",
+		"_collection_link": "https://manisha-4831.postman.co/workspace/My-Workspace~d023a01b-9597-408d-8352-e1f1e74cb772/collection/31909561-dadd37c2-4f4a-44dc-a031-6075ef16ae80?action=share&source=collection_link&creator=31909561"
+	},
+	"item": [
+		{
+			"name": "Automate flow",
+			"item": [
+				{
+					"name": "validatelogin Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"MobileNumber\": \"+4915216417250\",\r\n\"Password\": \"11111\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/validatelogin"
+					},
+					"response": []
+				},
+				{
+					"name": "14.getbuyrate Get BY Rate c-c",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log(\"Running tests for trade\")"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"BuyCurrencyId\": 2, //eth \r\n    \"BuyAmount\": 0.00300000,//min value 0.00014256,\r\n    \"BuyWithCurrencyId\": 1, // btc\r\n    \"Token\": \"TUS5791636D20F61\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/getbuyrate"
+					},
+					"response": []
+				},
+				{
+					"name": "14.Sell Get BY Rate c-c",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"SellCurrencyId\": 1, // btc\r\n        \"SellQuantity\": 0.0003,\r\n        \"SellForCurrencyId\": 2 ,//eth,\r\n        \"Token\": \"TUS8874099271F82\"\r\n    \r\n    } ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/getsellrate"
+					},
+					"response": []
+				},
+				{
+					"name": "15.Crypto Sell Token generation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Parse the JSON response\r",
+									"const responseData = pm.response.json();\r",
+									"\r",
+									"// Extract the token and save it as a collection variable\r",
+									"pm.collectionVariables.set(\"buytoken\", responseData.Token);"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						},
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url1}}api/v2/gettranstoken?TransType=TRADE",
+							"host": [
+								"{{url1}}api"
+							],
+							"path": [
+								"v2",
+								"gettranstoken"
+							],
+							"query": [
+								{
+									"key": "TransType",
+									"value": "TRADE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "14.buy Crypto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"function generateFlexibleBuyAmount() {\r",
+									"    // Random significant digits (1-9)\r",
+									"    const digit = Math.floor(Math.random() * 9) + 1;\r",
+									"\r",
+									"    // Random decimal places (3-6)\r",
+									"    const decimalPlaces = Math.floor(Math.random() * 3) + 3;\r",
+									"\r",
+									"    // Calculate the amount\r",
+									"    const buyAmount = digit / Math.pow(10, decimalPlaces);\r",
+									"\r",
+									"    return buyAmount;\r",
+									"}\r",
+									"\r",
+									"const randomBuyAmount = generateFlexibleBuyAmount();\r",
+									"pm.collectionVariables.set(\"buyAmount\", randomBuyAmount);\r",
+									"\r",
+									"console.log(\"Generated BuyAmount:\", randomBuyAmount);\r",
+									"\r",
+									"let response = pm.response.json();\r",
+									"\r",
+									"// Fail if status indicates failure\r",
+									"pm.test(\"Business status should be SUCCESS\", function () {\r",
+									"    pm.expect(\r",
+									"        response.status === \"SUCCESS\" || response.success === true,\r",
+									"        \"API failed with message: \" + (response.message || \"No message\")\r",
+									"    ).to.be.true;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"BuyCurrencyId\": 1,\r\n    \"BuyAmount\": \"{{buyAmount}}\", //\"BuyAmount\":// buyAmount}},\r\n    \"BuyWithCurrencyId\": 4,\r\n    \"Token\": \"{{buytoken}}\"\r\n}\r\n\r\n\r\n// {\r\n//     \"BuyCurrencyId\": 1,\r\n//     \"BuyAmount\": 0.0008,\r\n//     \"BuyWithCurrencyId\": 4,\r\n//     \"Token\": \"{{buytoken}}\"\r\n// } ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/buy"
+					},
+					"response": []
+				},
+				{
+					"name": "15.Crypto Sell Token generation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Parse the JSON response\r",
+									"const responseData = pm.response.json();\r",
+									"\r",
+									"// Extract the token and save it as a collection variable\r",
+									"pm.collectionVariables.set(\"selltoken\", responseData.Token);"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						},
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url1}}api/v2/gettranstoken?TransType=TRADE",
+							"host": [
+								"{{url1}}api"
+							],
+							"path": [
+								"v2",
+								"gettranstoken"
+							],
+							"query": [
+								{
+									"key": "TransType",
+									"value": "TRADE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "15.Crypto Sell",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"\r",
+									"// Fail if status indicates failure\r",
+									"pm.test(\"Business status should be SUCCESS\", function () {\r",
+									"    pm.expect(\r",
+									"        response.status === \"SUCCESS\" || response.success === true,\r",
+									"        \"API failed with message: \" + (response.message || \"No message\")\r",
+									"    ).to.be.true;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"SellCurrencyId\" : 1,\r\n\t\"SellAmount\" : \"{{buyAmount}}\",\r\n\t\"SellForCurrencyId\" : 4,\r\n    \"Token\": \"{{selltoken}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/sellexchange"
+					},
+					"response": []
+				},
+				{
+					"name": "gettransactionfee",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log(\"Running tests transaction fee\")\r",
+									"\r",
+									"let response = pm.response.json();\r",
+									"\r",
+									"// Fail if status indicates failure\r",
+									"pm.test(\"Business status should be SUCCESS\", function () {\r",
+									"    pm.expect(\r",
+									"        response.status === \"SUCCESS\" || response.success === true,\r",
+									"        \"API failed with message: \" + (response.message || \"No message\")\r",
+									"    ).to.be.true;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CurrencyId\": 1,\r\n    \"FeeType\": \"SENDCRYPTOINT\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/gettransactionfee"
+					},
+					"response": []
+				},
+				{
+					"name": "getpaymentcodes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"\r",
+									"// Fail if status indicates failure\r",
+									"pm.test(\"Business status should be SUCCESS\", function () {\r",
+									"    pm.expect(\r",
+									"        response.status === \"SUCCESS\" || response.success === true,\r",
+									"        \"API failed with message: \" + (response.message || \"No message\")\r",
+									"    ).to.be.true;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						},
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/getpaymentcodes"
+					},
+					"response": []
+				},
+				{
+					"name": "getbiometrictransactions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"\r",
+									"// Fail if status indicates failure\r",
+									"pm.test(\"Business status should be SUCCESS\", function () {\r",
+									"    pm.expect(\r",
+									"        response.status === \"SUCCESS\" || response.success === true,\r",
+									"        \"API failed with message: \" + (response.message || \"No message\")\r",
+									"    ).to.be.true;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"StatusType\":\"ALL\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/getbiometrictransactions"
+					},
+					"response": []
+				},
+				{
+					"name": "Sendcrypto - Token generation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Parse the JSON response\r",
+									"const responseData = pm.response.json();\r",
+									"\r",
+									"// Extract the token and save it as a collection variable\r",
+									"pm.collectionVariables.set(\"sendtoken\", responseData.Token);\r",
+									"\r",
+									"\r",
+									"let response = pm.response.json();\r",
+									"\r",
+									"// Fail if status indicates failure\r",
+									"pm.test(\"Business status should be SUCCESS\", function () {\r",
+									"    pm.expect(\r",
+									"        response.status === \"SUCCESS\" || response.success === true,\r",
+									"        \"API failed with message: \" + (response.message || \"No message\")\r",
+									"    ).to.be.true;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						},
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url1}}api/v2/gettranstoken?TransType=SEND",
+							"host": [
+								"{{url1}}api"
+							],
+							"path": [
+								"v2",
+								"gettranstoken"
+							],
+							"query": [
+								{
+									"key": "TransType",
+									"value": "SEND"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sendcrypto - Internal",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"\r",
+									"// Fail if status indicates failure\r",
+									"pm.test(\"Business status should be SUCCESS\", function () {\r",
+									"    pm.expect(\r",
+									"        response.status === \"SUCCESS\" || response.success === true,\r",
+									"        \"API failed with message: \" + (response.message || \"No message\")\r",
+									"    ).to.be.true;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CurrencyId\": \"1\",\r\n    \"Address\": \"tb1qw2c3lxufxqe2x9s4rdzh65tpf4d7fssjgh8nv6\" ,\r\n    \"WithdrawalQuoteId\": \"\",\r\n    \"ConnectCode\": \"\",\r\n    \"Amount\": \"0.000043\",\r\n    \"TransRefCode\": \"\",\r\n    \"OTP\": \"\",\r\n    \"DestinationTag\": \"\",\r\n    \"ReasonCode\": \"funds\",\r\n    \"Remarks\": \"From ommm to  send BTC to Ext\",\r\n    \"DeliveryEngine\": 1,\r\n    \"Token\": \"{{sendtoken}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url1}}api/v2/sendcrypto",
+							"host": [
+								"{{url1}}api"
+							],
+							"path": [
+								"v2",
+								"sendcrypto"
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "{{authorization}}",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sendcrypto - Token generation Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Parse the JSON response\r",
+									"const responseData = pm.response.json();\r",
+									"\r",
+									"// Extract the token and save it as a collection variable\r",
+									"pm.collectionVariables.set(\"sendtoken\", responseData.Token);"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						},
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url1}}api/v2/gettranstoken?TransType=SEND",
+							"host": [
+								"{{url1}}api"
+							],
+							"path": [
+								"v2",
+								"gettranstoken"
+							],
+							"query": [
+								{
+									"key": "TransType",
+									"value": "SEND"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate crypto address",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Parse the JSON response\r",
+									"const responseData = pm.response.json();\r",
+									"\r",
+									"// Extract the token and save it as a collection variable\r",
+									"pm.collectionVariables.set(\"sendtoken\", responseData.Token);\r",
+									"\r",
+									"let response = pm.response.json();\r",
+									"\r",
+									"// Fail if status indicates failure\r",
+									"pm.test(\"Business status should be SUCCESS\", function () {\r",
+									"    pm.expect(\r",
+									"        response.status === \"SUCCESS\" || response.success === true,\r",
+									"        \"API failed with message: \" + (response.message || \"No message\")\r",
+									"    ).to.be.true;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Currency\": \"BTC\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/generatecryptoaddress"
+					},
+					"response": []
+				},
+				{
+					"name": "SendFiat - Internal Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"\r",
+									"// Fail if status indicates failure\r",
+									"pm.test(\"Business status should be SUCCESS\", function () {\r",
+									"    pm.expect(\r",
+									"        response.status === \"SUCCESS\" || response.success === true,\r",
+									"        \"API failed with message: \" + (response.message || \"No message\")\r",
+									"    ).to.be.true;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ConnectCode\": \"TNG-958-240-2F3F1\",\r\n    \"Amount\": \"28\",\r\n    \"PaymentDate\": \"15/10/2025\",\r\n    \"ReasonCode\": \"overheads\",\r\n    \"CurrencyId\": 4,\r\n    \"Token\": \"{{sendtoken}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url1}}api/v2/SendFiat",
+							"host": [
+								"{{url1}}api"
+							],
+							"path": [
+								"v2",
+								"SendFiat"
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "{{authorization}}",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Beneficiary Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n     \"ConnectCode\":\"TNG-706-265-497C\",\r\n    \"NickName\":\"onkar\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/AddBeneficiary"
+					},
+					"response": []
+				},
+				{
+					"name": "Get user beneficieries Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}\r\n\r\n//{\"CurrencyId\":\"\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/getuserbeneficiaries"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Beneficiary Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ConnectCode\":\"TNG-706-265-497C\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/DeleteBeneficiary"
+					},
+					"response": []
+				},
+				{
+					"name": "20.Add Crypto Beneficiary -External Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CurrencyId\": 1,\r\n    \"NickName\": \"vi-lo\",\r\n    \"Address\": \"1ChvY9JSvtKo4FpV6D25FHuRfRdxMvwRSk\", \r\n    \"DeliveryEngine\": 1,\r\n    \"OTP\":\"219035\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/addcryptobeneficiary"
+					},
+					"response": []
+				},
+				{
+					"name": "21.Activate Crypto Beneficiary -External Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ConnectCode\": \"TUS-446-933-8B25B\",\r\n    \"OTP\": \"265421\",\r\n    \"ProccessRefCode\": \"5455532D3434362D3933332D38423235427E3236353432317E323032332D30372D32312031393A33383A32367E31\",\r\n    \"CurrencyId\": \"1\",\r\n    \"DeliveryEngine\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/activatecryptobeneficiary"
+					},
+					"response": []
+				},
+				{
+					"name": "Get wallet address Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CurrencyCode\":\"ETH\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/getwalletaddress"
+					},
+					"response": []
+				},
+				{
+					"name": "Get usertransactions history",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"DateFrom\": \"2025-02-20\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/GetUserTransactionsHistory"
+					},
+					"response": []
+				},
+				{
+					"name": "user transaction details",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"ApplicationReference\":\"TUS325782EA09195\",\r\n     \"CurrencyCode\":\"ETH\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/usertransactiondetails"
+					},
+					"response": []
+				},
+				{
+					"name": "get Accounts",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						},
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/getaccounts"
+					},
+					"response": []
+				},
+				{
+					"name": "usercryptoreqagr",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Parse the JSON response\r",
+									"const responseData = pm.response.json();\r",
+									"\r",
+									"// Extract the token and save it as a collection variable\r",
+									"pm.collectionVariables.set(\"buytoken\", responseData.Token);"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \r\n    \r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/usercryptoreqagr"
+					},
+					"response": []
+				},
+				{
+					"name": "Heartbeat API",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"jsonData=JSON.parse(responseBody)\r",
+									"variable_value2=jsonData.Message\r",
+									"pm.globals.set(\"V2\",variable_value2);\r",
+									"\r",
+									"var response=JSON.parse(responseBody);\r",
+									"tests[\"check the StatusCode in the response in exact position\"]=response.StatusCode==\"200\""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						},
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "9J7D2IQ5YPV1A6JXUJYWORGTJCBB7I9BVA137JDD0V5IG6IEMBX2OEGXZSNJB8O26NST82QJ753D920L5BNMPRA5BRBZEW7R8TLDJM1X7OSKZH8KIZ8RTOLM3XRAIWJU ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/heartbeat"
+					},
+					"response": []
+				},
+				{
+					"name": "getsignincountries",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "9J7D2IQ5YPV1A6JXUJYWORGTJCBB7I9BVA137JDD0V5IG6IEMBX2OEGXZSNJB8O26NST82QJ753D920L5BNMPRA5BRBZEW7R8TLDJM1X7OSKZH8KIZ8RTOLM3XRAIWJU",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "{{url1}}api/v2/getsignincountries"
+					},
+					"response": []
+				},
+				{
+					"name": "getsignupcountries",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "9J7D2IQ5YPV1A6JXUJYWORGTJCBB7I9BVA137JDD0V5IG6IEMBX2OEGXZSNJB8O26NST82QJ753D920L5BNMPRA5BRBZEW7R8TLDJM1X7OSKZH8KIZ8RTOLM3XRAIWJU",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "{{url1}}api/v2/getsignupcountries"
+					},
+					"response": []
+				},
+				{
+					"name": "getmobilesite",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "9J7D2IQ5YPV1A6JXUJYWORGTJCBB7I9BVA137JDD0V5IG6IEMBX2OEGXZSNJB8O26NST82QJ753D920L5BNMPRA5BRBZEW7R8TLDJM1X7OSKZH8KIZ8RTOLM3XRAIWJU",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payload\": \"sCQ8eEt98qeowP6L207v09cxda//HT6TpI+V8d3vhJ0\\u003d\\n\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/getmobilesite"
+					},
+					"response": []
+				},
+				{
+					"name": "User Hub Data -userhubdata Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response=JSON.parse(responseBody);\r",
+									"tests[\"check the StatusCode in the response in exact position\"]=response.StatusCode==\"200\""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FiatCurrencyId\" : 6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/userhubdata"
+					},
+					"response": []
+				},
+				{
+					"name": "User Hub Data - usercryptodata Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response=JSON.parse(responseBody);\r",
+									"tests[\"check the StatusCode in the response in exact position\"]=response.StatusCode==\"200\""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FiatCurrencyId\":3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/usercryptodata"
+					},
+					"response": []
+				},
+				{
+					"name": "User Hub Data - usercryptopairdata Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FiatCurrencyId\":4 ,\r\n    \"CryptoCurrencyId\":1,\r\n    \"OHLCRange\":\"D\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/usercryptopairdata"
+					},
+					"response": []
+				},
+				{
+					"name": "User Hub Data - userfiatdata Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"FiatCurrencyId\":120  \r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/userhubdata"
+					},
+					"response": []
+				},
+				{
+					"name": "Alerts LIST Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "{{url1}}api/v2/getalerts"
+					},
+					"response": []
+				},
+				{
+					"name": "add alert Copy",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"CurrencyCode\": \"USD\",\r\n  \"VsCurrencyCode\": \"BTC\",\r\n  \"CurrentPrice\": 0.00000000000000000001,\r\n  \"TargetPrice\": 0.0000000000000000000002,\r\n  \"Action\": 1,\r\n  \"BaseCurrencyCode\": \"USD\",\r\n  \"BaseCurrencyAmount\": 8,\r\n  \"QuoteCurrencyCode\": \"BTC\"\r\n}\r\n ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/addalert"
+					},
+					"response": []
+				},
+				{
+					"name": "alert Details Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url1}}api/v2/getalertdetails?Tref=TNG756438609650F",
+							"host": [
+								"{{url1}}api"
+							],
+							"path": [
+								"v2",
+								"getalertdetails"
+							],
+							"query": [
+								{
+									"key": "Tref",
+									"value": "TNG756438609650F"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update alert Copy",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ApplicationRef\": \"TUS2907388E825A3\",\r\n  \"CurrentPrice\": 8,\r\n  \"TargetPrice\": 8.75,\r\n  \"Action\": 1,\r\n  \"BaseCurrencyCode\": \"USD\",\r\n  \"BaseCurrencyAmount\": 8.75,\r\n  \"QuoteCurrencyCode\": \"ETH\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/updatealert"
+					},
+					"response": []
+				},
+				{
+					"name": "delete alert Copy",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ApplicationRef\": \"TNG5572007604170\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/deletealert"
+					},
+					"response": []
+				},
+				{
+					"name": "Get user settings Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						},
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/getusersettings"
+					},
+					"response": []
+				},
+				{
+					"name": "Get profile info Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						},
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CurrencyCode\":\"ETH\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/getProfileInfo"
+					},
+					"response": []
+				},
+				{
+					"name": "Get notification settings Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						},
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/getnotificationsettings"
+					},
+					"response": []
+				},
+				{
+					"name": "Update user info Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Alias\":\"ommm\",\r\n    \"EmailAddress\":\"Vishallll711995@yopmail.com\",\r\n    \"MobileNumber\":\"+447893980868\",\r\n    \"CountryId\":\"228\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/UpdateUserInfo"
+					},
+					"response": []
+				},
+				{
+					"name": "Update default currency Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \r\n    \"Currency\":\"EUR\"\r\n    \r\n}\r\n ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/updatedefaultcurrency"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Language Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response=JSON.parse(responseBody);\r",
+									"tests[\"check the StatusCode in the response in exact position\"]=response.StatusCode==\"200\""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"PreferredLang\":\"el\"\r\n}\r\n\r\n// For spanish enter \"el\" and for english enter \"en\"",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/updatelang"
+					},
+					"response": []
+				},
+				{
+					"name": "Get active sessions Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						},
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/getactivesessions"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete session Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Sessions\":[\"4d9062eef0816505\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/DeleteSession"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Terms & conditions Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": "{{url1}}api/v2/gettermsandconditions"
+					},
+					"response": []
+				},
+				{
+					"name": "Fee - Set xtp Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						},
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/setxtpasfeecurrency"
+					},
+					"response": []
+				},
+				{
+					"name": "Fee - Remove xtp Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						},
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/removextpasfeecurrency"
+					},
+					"response": []
+				},
+				{
+					"name": "Update notification settings Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"AllAlerts\":true,\r\n    \"AllEmailAlerts\":true,\r\n    \"AllFiatTransactions\":true,\r\n    \"MinimumFiatTransactions\":true,\r\n    \"MinimumFiatValue\":\"1.00\",\r\n    \"POSTransactions\":true,\r\n    \"ATMTransactions\":true,\r\n    \"CLTransactions\":true,\r\n    \"ECOMTransactions\":true,\r\n    \"FiatW2WTransactions\":true,\r\n    \"CrossBorderTransactions\":true,\r\n    \"AllCryptoTransactions\":true,\r\n    \"MinimumCryptoTransactions\":true,\r\n    \"MinimumCryptoValue\":\"0.00010000\",\r\n    \"ETHBTCTransactions\":true,\r\n    \"LTCBTCTransactions\":true,\r\n    \"LTCETHTransactions\":true,\r\n    \"BTCEURTransactions\":true,\r\n    \"BTCUSDTransactions\":true,\r\n    \"BTCGBPTransactions\":true,\r\n    \"ETHEURTransactions\":true,\r\n    \"ETHUSDTransactions\":true,\r\n    \"ETHGBPTransactions\":true,\r\n    \"LTCEURTransactions\":true,\r\n    \"LTCUSDTransactions\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/updatenotificationsettings"
+					},
+					"response": []
+				},
+				{
+					"name": "Set tfa Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"SetTFA\":true,\r\n    \"Type\":2\r\n}\r\n ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/settfa"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Biometric status Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"BiometricStatus\":1\r\n}\r\n\r\n// Enter 1 to enable and 0 to disable biometric status\r\n \r\n ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/updatebiometricstatus"
+					},
+					"response": []
+				},
+				{
+					"name": "getapplicableprivileges Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/getapplicableprivileges"
+					},
+					"response": []
+				},
+				{
+					"name": "checkprivilegeupgrade Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"NewPrivilegeId\": 7\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/checkprivilegeupgrade"
+					},
+					"response": []
+				},
+				{
+					"name": "upgradeprivilege Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"NewPrivilegeId\": 8\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://tcre-ut-eus0225.net/api/v2/upgradeprivilege"
+					},
+					"response": []
+				},
+				{
+					"name": "downgradeprivilege Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"NewPrivilegeId\": 7\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/downgradeprivilege"
+					},
+					"response": []
+				},
+				{
+					"name": "User app feature check Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"AppFeatureId\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/userappfeatureack"
+					},
+					"response": []
+				},
+				{
+					"name": "getusercurrencysubscriptions Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FiatCurrencyId\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/getusercurrencysubscriptions"
+					},
+					"response": []
+				},
+				{
+					"name": "user deposit currency subscription details Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CurrencyId\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/userdepositcurrencysubscriptiondetails"
+					},
+					"response": []
+				},
+				{
+					"name": "get user currency subscriptions Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FiatCurrencyId\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/getusercurrencysubscriptions"
+					},
+					"response": []
+				},
+				{
+					"name": "Add deposit Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CurrencyId\": 4,\r\n    \"Amount\": 106,\r\n    \"SubscriptionType\": \"In Kind\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/adddeposit"
+					},
+					"response": []
+				},
+				{
+					"name": "user balances Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FiatCurrencyId\":\"1\",\r\n    \"Currency\":\"BTC\"  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/userbalances"
+					},
+					"response": []
+				},
+				{
+					"name": "user hub data Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FiatCurrencyId\":\"1\",\r\n    \"Currency\":\"BTC\"  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/userhubdata"
+					},
+					"response": []
+				},
+				{
+					"name": "get saved cards info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Parse the JSON response",
+									"const responseData = pm.response.json();",
+									"",
+									"  // Save it as a collection variable",
+									"    pm.collectionVariables.set(\"RegistrationId\", responseData.SavedCards[0].RegistrationId);"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						},
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/getsavedcardsinfo"
+					},
+					"response": []
+				},
+				{
+					"name": "get load wallet info -CARD",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Currency\": \"EUR\",\r\n    \"RegistrationId\": \"{{RegistrationId}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/getloadwalletinfo"
+					},
+					"response": []
+				},
+				{
+					"name": "ViewCard -Card",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Parse the JSON response\r",
+									"const responseData = pm.response.json();\r",
+									"\r",
+									"\r",
+									"// Extract the ImageURL\r",
+									"const imageURL = responseData.ImageURL;\r",
+									"\r",
+									"// Parse the URL to extract RequestId\r",
+									"if (imageURL) {\r",
+									"    // Create a URL object to easily parse query parameters\r",
+									"    const url = new URL(imageURL);\r",
+									"    const requestId = url.searchParams.get(\"RequestId\");\r",
+									"\r",
+									"    // Save it as a collection variable\r",
+									"    pm.collectionVariables.set(\"RequestId\", requestId);\r",
+									"\r",
+									"    // Print to console\r",
+									"    console.log(\"ImageURL:\", imageURL);\r",
+									"    console.log(\"Extracted RequestId:\", requestId);\r",
+									"} else {\r",
+									"    console.log(\"ImageURL not found in response\");\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						},
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url1}}api/v2/ViewCard"
+					},
+					"response": []
+				},
+				{
+					"name": "viewmycard -Card",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						},
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{Content-Type}}",
+								"type": "text"
+							},
+							{
+								"key": "CoreHeader",
+								"value": "{{CoreHeader}}",
+								"type": "text"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url1}}api/v2/viewmycard?RequestId={{RequestId}}",
+							"host": [
+								"{{url1}}api"
+							],
+							"path": [
+								"v2",
+								"viewmycard"
+							],
+							"query": [
+								{
+									"key": "RequestId",
+									"value": "{{RequestId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Collection-level Pre-request Script for E-commerce Platform API",
+					"",
+					"// Set timestamp variable for request tracking",
+					"const timestamp = new Date().toISOString();",
+					"pm.collectionVariables.set(\"request_timestamp\", timestamp);",
+					"",
+					"// Generate unique request ID for tracking",
+					"const requestId = 'REQ-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);",
+					"pm.collectionVariables.set(\"request_tracking_id\", requestId);",
+					"",
+					"// Log request details",
+					"console.log('=== Request Details ===');",
+					"console.log('Request Name:', pm.info.requestName);",
+					"console.log('Request ID:', pm.info.requestId);",
+					"console.log('Timestamp:', timestamp);",
+					"console.log('Tracking ID:', requestId);",
+					"console.log('Method:', pm.request.method);",
+					"console.log('URL:', pm.request.url.toString());",
+					"",
+					"// Log iteration info if running in collection runner",
+					"if (pm.info.iteration !== undefined) {",
+					"    console.log('Iteration:', pm.info.iteration + 1, 'of', pm.info.iterationCount);",
+					"}",
+					"",
+					"console.log('=======================');"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Collection-level Test Script for E-commerce Platform API",
+					"",
+					"// Log response status and time",
+					"console.log('=== Response Details ===');",
+					"console.log('Request:', pm.info.requestName);",
+					"console.log('Status:', pm.response.status, '(' + pm.response.code + ')');",
+					"console.log('Response Time:', pm.response.responseTime + 'ms');",
+					"console.log('Response Size:', pm.response.responseSize + ' bytes');",
+					"console.log('========================');",
+					"",
+					"// Test: Response time is under 2000ms",
+					"pm.test(\"Response time is under 2000ms\", function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+					"});",
+					"",
+					"// Test: Status code is in 2xx or 3xx range (successful responses)",
+					"pm.test(\"Status code is in 2xx or 3xx range\", function () {",
+					"    pm.expect(pm.response.code).to.be.within(200, 399);",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "request_timestamp",
+			"value": ""
+		},
+		{
+			"key": "request_tracking_id",
+			"value": ""
+		},
+		{
+			"key": "buytoken",
+			"value": ""
+		},
+		{
+			"key": "buyAmount",
+			"value": ""
+		},
+		{
+			"key": "selltoken",
+			"value": ""
+		},
+		{
+			"key": "sendtoken",
+			"value": ""
+		},
+		{
+			"key": "RegistrationId",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "RequestId",
+			"value": ""
+		}
+	]
+}
