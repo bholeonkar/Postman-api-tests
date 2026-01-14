@@ -12,7 +12,7 @@
 			"name": "Automate flow",
 			"item": [
 				{
-					"name": "validatelogin Copy",
+					"name": "validatelogin",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1077,7 +1077,7 @@
 					"response": []
 				},
 				{
-					"name": "Add Beneficiary Copy",
+					"name": "Add Beneficiary",
 					"protocolProfileBehavior": {
 						"disabledSystemHeaders": {
 							"content-type": true
@@ -1124,7 +1124,7 @@
 					"response": []
 				},
 				{
-					"name": "Get user beneficieries Copy",
+					"name": "Get user beneficieries",
 					"protocolProfileBehavior": {
 						"disabledSystemHeaders": {
 							"content-type": true
@@ -1218,7 +1218,7 @@
 					"response": []
 				},
 				{
-					"name": "20.Add Crypto Beneficiary -External Copy",
+					"name": "20.Add Crypto Beneficiary -External",
 					"protocolProfileBehavior": {
 						"disabledSystemHeaders": {
 							"content-type": true
@@ -1265,7 +1265,7 @@
 					"response": []
 				},
 				{
-					"name": "21.Activate Crypto Beneficiary -External Copy",
+					"name": "21.Activate Crypto Beneficiary -External",
 					"protocolProfileBehavior": {
 						"disabledSystemHeaders": {
 							"content-type": true
@@ -1312,7 +1312,7 @@
 					"response": []
 				},
 				{
-					"name": "Get wallet address Copy",
+					"name": "Get wallet address",
 					"protocolProfileBehavior": {
 						"disabledSystemHeaders": {
 							"content-type": true
@@ -1741,7 +1741,7 @@
 					"response": []
 				},
 				{
-					"name": "User Hub Data -userhubdata Copy",
+					"name": "User Hub Data -userhubdata",
 					"event": [
 						{
 							"listen": "test",
